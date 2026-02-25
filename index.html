@@ -1,1 +1,1178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Questionário sobre Neurodesenvolvimento</title>
 
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --bg-soft:#eef2f7;
+    --card:#ffffff;
+    --line:#e5e7eb;
+    --line-2:#d1d5db;
+    --text:#111827;
+    --muted:#6b7280;
+    --pri:#16a34a;
+    --pri-dark:#15803d;
+    --err:#dc2626;
+    --warn:#d97706;
+    --ok:#059669;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #f8fafc, #eef2f7);
+    color: var(--text);
+    min-height: 100dvh;
+    display:flex;
+    align-items:flex-start; /* melhor para formulários longos */
+    justify-content:center;
+    padding:16px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:860px;
+  }
+
+  .card{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  }
+
+  h1{
+    margin:0 0 8px;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height:1.2;
+    color: var(--text);
+  }
+
+  .muted{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:16px;
+    line-height:1.4;
+  }
+
+  .status{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px 14px;
+    margin-bottom:16px;
+    background:#fff;
+    font-size:14px;
+    line-height:1.4;
+    word-break: break-word;
+  }
+
+  .status.loading{
+    border-color:#cbd5e1;
+    background:#f8fafc;
+    color:#334155;
+  }
+  .status.ok{
+    border-color:rgba(5,150,105,.25);
+    background:#ecfdf5;
+    color:#065f46;
+  }
+  .status.err{
+    border-color:rgba(220,38,38,.22);
+    background:#fef2f2;
+    color:#991b1b;
+  }
+  .status.warn{
+    border-color:rgba(217,119,6,.25);
+    background:#fffbeb;
+    color:#92400e;
+  }
+
+  .hidden{ display:none !important; }
+
+  #metaInfo{
+    margin-bottom:12px;
+  }
+
+  .pill{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:#f9fafb;
+    color:#374151;
+    font-size:12px;
+    margin-right:6px;
+    margin-bottom:6px;
+    word-break: break-word;
+  }
+
+  form{
+    display:grid;
+    gap:14px;
+    margin-top:8px;
+  }
+
+  .row{
+    display:grid;
+    gap:8px;
+    padding:12px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff;
+  }
+
+  .field-label{
+    font-size:14px;
+    color:var(--text);
+    line-height:1.45;
+    font-weight:600;
+  }
+
+  /* Importante: NÃO estilizar todo input (senão quebra radio/checkbox) */
+  .field-control,
+  input:not([type="radio"]):not([type="checkbox"]),
+  textarea,
+  select{
+    width:100%;
+    background:#fff;
+    border:1px solid var(--line-2);
+    color:var(--text);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:16px; /* evita zoom no iPhone */
+    outline:none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+
+  .field-control:focus,
+  input:not([type="radio"]):not([type="checkbox"]):focus,
+  textarea:focus,
+  select:focus{
+    border-color:#93c5fd;
+    box-shadow:0 0 0 3px rgba(59,130,246,.14);
+  }
+
+  textarea{
+    min-height:100px;
+    resize:vertical;
+  }
+
+.choice-group{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap:8px;
+  margin-top:4px;
+}
+
+  .choice-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px;
+  background:#f9fafb;
+  cursor:pointer;
+  line-height:1.35;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+  .choice-item:hover{
+    background:#f3f4f6;
+    border-color:#cbd5e1;
+  }
+
+  .choice-item input[type="radio"],
+  .choice-item input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    margin:1px 0 0 0;
+    flex:0 0 18px;
+    accent-color: var(--pri);
+  }
+
+  .choice-text{
+    font-size:14px;
+    color:#111827;
+    line-height:1.35;
+  }
+
+  button{
+    margin-top:6px;
+    border:none;
+    border-radius:10px;
+    padding:12px 14px;
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+    background:var(--pri);
+    color:#ffffff;
+    transition:.2s ease;
+    width:100%;
+  }
+
+  button:hover{ background:var(--pri-dark); }
+  button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+  }
+
+  .small{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:10px;
+    line-height:1.4;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px){
+    body{
+      padding:10px;
+    }
+
+    .card{
+      border-radius:12px;
+      padding:14px;
+    }
+
+    .row{
+      padding:10px;
+      border-radius:10px;
+    }
+
+    .field-label{
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .choice-item{
+      padding:10px;
+      gap:8px;
+    }
+
+    .choice-text{
+      font-size:13px;
+    }
+
+    .muted, .status{
+      font-size:13px;
+    }
+  }
+</style>
+
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Questionário de Neurodesenvolvimento</h1>
+  
+
+      <div id="statusBox" class="status loading">Validando acesso...</div>
+
+      <div id="metaInfo" class="hidden"></div>
+
+      <div id="formWrap" class="hidden">
+        <!-- FORMULÁRIO (exemplo) -->
+       <form id="testForm"></form>
+
+       
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    const SUPABASE_URL = "https://ydypdeafbcdcamwigjuq.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_lg9teAniku65cd2dnZJvIQ_Zii0XneZ";
+
+    const TEST_CODE_FIXO = "NEURODESENVOLVIMENTO_V2";
+
+    
+
+    // Área do paciente
+    const AREA_PACIENTE_URL = "https://integradaneuropsicologia.github.io/area-do-paciente-v2/";
+
+    // Cliente Supabase
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Escalas padrão
+const FREQ5   = ["Nunca","Raramente","Às vezes","Frequentemente","Quase sempre", "Não se aplica"];
+const SEVER4  = ["Não","Leve","Moderada","Grave", "Não se aplica"];
+const YESNO   = ["Sim","Não", "Não se aplica"];
+const YNP     = ["Sim","Não","Não sei", "Não se aplica"];
+
+    /**************************************************************
+ * CONFIGURAÇÃO DAS PERGUNTAS (DINÂMICO)
+ **************************************************************/
+const FORM_QUESTIONS = [
+
+    {
+    name: "linguagem_dificuldade_aprendizado",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente para aprender, entender e/ou usar linguagem (palavras e frases) no dia a dia, abaixo do esperado para minha idade",
+    options: FREQ5,
+    required: true
+  },
+  {
+    name: "linguagem_prejuizo_funcional",
+    type: "radio",
+    text: "Minhas dificuldades de linguagem atrapalham de forma significativa minha comunicação, minha vida social e/ou meu desempenho escolar/profissional",
+    options: SEVER4
+  },
+  {
+    name: "linguagem_inicio_infancia",
+    type: "radio",
+    text: "Essas dificuldades de linguagem existem desde a infância (mesmo que tenham ficado mais evidentes quando as exigências aumentaram)",
+    options: YNP
+  },
+
+  {
+    name: "fala_dificuldade_articulacao",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente para produzir sons da fala de forma clara (troco/omito/distorço sons) e isso reduz a inteligibilidade da minha fala",
+    options: FREQ5
+  },
+  {
+    name: "fala_prejuizo_funcional",
+    type: "radio",
+    text: "Minha fala pouco clara atrapalha de forma significativa minha comunicação, minha participação social e/ou meu desempenho escolar/profissional",
+    options: SEVER4
+  },
+  {
+    name: "fala_inicio_infancia",
+    type: "radio",
+    text: "Essa dificuldade para articular sons começou na infância",
+    options: YNP
+  },
+
+  {
+    name: "pragmatica_objetivos_sociais",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente para usar a comunicação com objetivos sociais (ex.: cumprimentar, iniciar/encerrar conversa, compartilhar informações de forma adequada)",
+    options: FREQ5
+  },
+  {
+    name: "pragmatica_ajuste_contexto",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente para ajustar a comunicação ao contexto e às pessoas (ex.: formal/informal, adulto/criança, ambiente de casa/escola/trabalho)",
+    options: FREQ5
+  },
+  {
+    name: "pragmatica_prejuizo",
+    type: "radio",
+    text: "Essas dificuldades de comunicação social atrapalham de forma significativa minhas relações, meu desempenho escolar/profissional e/ou meu funcionamento no dia a dia",
+    options: SEVER4
+  },
+  {
+    name: "pragmatica_inicio_precoce",
+    type: "radio",
+    text: "Essas dificuldades de comunicação social existem desde cedo (mesmo que tenham ficado mais evidentes com o aumento das demandas sociais)",
+    options: YNP
+  },
+
+  {
+    name: "aprendizagem_dificuldade_6m",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente em pelo menos uma área acadêmica (leitura, escrita e/ou matemática) que dura há pelo menos 6 meses, mesmo com ajuda/intervenções direcionadas",
+    options: YNP
+  },
+  {
+    name: "aprendizagem_prejuizo",
+    type: "radio",
+    text: "Essas dificuldades acadêmicas atrapalham de forma significativa meu desempenho escolar/profissional e/ou tarefas do dia a dia",
+    options: SEVER4
+  },
+  {
+    name: "aprendizagem_inicio_escolar",
+    type: "radio",
+    text: "Essas dificuldades começaram nos anos escolares (mesmo que eu tenha percebido mais quando a exigência aumentou)",
+    options: YNP
+  },
+
+  {
+    name: "motor_coordenacao_baixa",
+    type: "radio",
+    text: "Minha coordenação motora é abaixo do esperado para minha idade (sou desajeitado(a) e/ou lento(a) e impreciso(a) em habilidades motoras)",
+    options: FREQ5
+  },
+  {
+    name: "motor_prejuizo",
+    type: "radio",
+    text: "Essas dificuldades motoras atrapalham de forma significativa minhas atividades do dia a dia (autocuidado, tarefas, autonomia) e/ou meu desempenho escolar/profissional/lazer",
+    options: SEVER4
+  },
+  {
+    name: "motor_inicio_infancia",
+    type: "radio",
+    text: "Essas dificuldades motoras começaram na infância",
+    options: YNP
+  },
+
+
+  {
+    name: "tea_reciprocidade",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente de reciprocidade socioemocional (por exemplo: manter uma troca natural na conversa, compartilhar interesses/emoções e iniciar ou responder interações sociais)",
+    options: FREQ5
+  },
+  {
+    name: "tea_comunicacao_nao_verbal",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente em usar e integrar comunicação não verbal (por exemplo: contato visual, gestos, expressão facial e linguagem corporal) de forma adequada ao contexto",
+    options: FREQ5
+  },
+  {
+    name: "tea_relacionamentos",
+    type: "radio",
+    text: "Eu tenho dificuldade persistente para desenvolver, manter e compreender relacionamentos (por exemplo: fazer/manter amizades, ajustar meu comportamento ao contexto e demonstrar interesse por pares)",
+    options: FREQ5
+  },
+  {
+    name: "tea_movimentos_repetitivos",
+    type: "radio",
+    text: "Eu faço movimentos repetitivos e/ou uso objetos de forma repetitiva e incomum (por exemplo: balançar o corpo, bater as mãos, alinhar ou girar objetos)",
+    options: FREQ5
+  },
+  {
+    name: "tea_ecolalia",
+    type: "radio",
+    text: "Eu repito palavras/frases ou tenho um jeito de falar repetitivo e estereotipado (por exemplo: ecolalia, frases prontas, repetir o que ouvi)",
+    options: FREQ5
+  },
+  {
+    name: "tea_hipersensibilidade_sensorial",
+    type: "radio",
+    text: "Eu reajo de forma muito intensa a estímulos sensoriais (sons, luz, cheiros, texturas) ou, ao contrário, pareço sentir pouco dor/temperatura",
+    options: FREQ5
+  },
+  {
+    name: "tea_inicio_desenvolvimento",
+    type: "radio",
+    text: "Essas dificuldades sociais e/ou esses comportamentos repetitivos existem desde o início do meu desenvolvimento (mesmo que tenham ficado mais evidentes quando as exigências aumentaram)",
+    options: YNP
+  },
+  {
+    name: "tea_prejuizo_atual",
+    type: "radio",
+    text: "Essas dificuldades sociais e/ou esses comportamentos repetitivos causam prejuízo significativo na minha vida atual (social, escolar, profissional e/ou autonomia)",
+    options: SEVER4
+  },
+
+  {
+    name: "tdah_desatencao_erros",
+    type: "radio",
+    text: "Eu frequentemente cometo erros por descuido ou deixo passar detalhes importantes em tarefas (escola, trabalho ou rotina)",
+    options: FREQ5
+  },
+  {
+    name: "tdah_desatencao_manutencao",
+    type: "radio",
+    text: "Eu frequentemente tenho dificuldade de manter a atenção em tarefas ou atividades longas",
+    options: FREQ5
+  },
+  {
+    name: "tdah_desatencao_esquecimento",
+    type: "radio",
+    text: "Eu frequentemente esqueço atividades do dia a dia (compromissos, recados, pagamentos, retornar mensagens)",
+    options: FREQ5
+  },
+
+  {
+    name: "tdah_hiperatividade_inquietacao",
+    type: "radio",
+    text: "Eu frequentemente remexo mãos/pés, me contorço na cadeira ou demonstro inquietação motora",
+    options: FREQ5
+  },
+  {
+    name: "tdah_impulsividade_interrupcao",
+    type: "radio",
+    text: "Eu frequentemente interrompo, me intrometo ou invado o espaço do outro",
+    options: FREQ5
+  },
+  {
+    name: "tdah_inicio_precoce",
+    type: "radio",
+    text: "Vários desses sintomas já estavam presentes antes dos meus 12 anos",
+    options: YNP,
+   
+  },
+  {
+    name: "tdah_multiplos_contextos",
+    type: "radio",
+    text: "Esses sintomas aparecem em dois ou mais contextos (casa, escola, trabalho, vida social)",
+    options: YNP
+  },
+  {
+    name: "tdah_prejuizo_funcional",
+    type: "radio",
+    text: "Esses sintomas causam prejuízo significativo na minha vida",
+    options: SEVER4
+  }
+
+];
+
+    /**************************************************************
+     * HELPERS
+     **************************************************************/
+    const $ = (id) => document.getElementById(id);
+
+    function setStatus(text, type = "loading") {
+      const el = $("statusBox");
+      el.textContent = text;
+      el.className = `status ${type}`;
+    }
+
+    function normalizeCPF(cpf) {
+      return String(cpf || "").replace(/\D/g, "");
+    }
+
+    function getCpfFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+
+      // formato ?cpf=86090224200
+      let cpf = params.get("cpf");
+      if (cpf) return normalizeCPF(cpf);
+
+      // formato ?86090224200
+      const raw = window.location.search.replace("?", "").trim();
+      if (/^\d{11}$/.test(raw)) return raw;
+
+      return "";
+    }
+
+    function getTestCodeFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("code") || TEST_CODE_FIXO;
+    }
+
+    function isObject(v) {
+      return v && typeof v === "object" && !Array.isArray(v);
+    }
+
+    /**
+     * Verifica se o "code" existe dentro do JSONB (array, objeto, objeto aninhado)
+     * Isso deixa o código flexível para diferentes formatos de JSONB.
+     */
+    function containsTestCode(jsonb, testCode) {
+      if (!jsonb) return false;
+
+      // string simples
+      if (typeof jsonb === "string") {
+        return jsonb === testCode;
+      }
+
+      // array
+      if (Array.isArray(jsonb)) {
+        return jsonb.some(item => {
+          if (typeof item === "string") return item === testCode;
+          if (isObject(item)) {
+            return item.code === testCode || item.test_code === testCode || item.id === testCode || containsTestCode(item, testCode);
+          }
+          return false;
+        });
+      }
+
+      // objeto
+      if (isObject(jsonb)) {
+        // Caso 1: chave do objeto é o próprio código
+        if (Object.prototype.hasOwnProperty.call(jsonb, testCode)) {
+          const value = jsonb[testCode];
+
+          // Se a chave existe e é true / objeto / string, tratamos como "existe"
+          // (depois as funções específicas interpretam o status)
+          if (value !== false && value !== null && value !== undefined) return true;
+
+          // se existir mas estiver false, ainda pode ser "não liberado/feito"
+          return false;
+        }
+
+        // Caso 2: objeto com campo code
+        if (jsonb.code === testCode || jsonb.test_code === testCode || jsonb.id === testCode) {
+          return true;
+        }
+
+        // Caso 3: busca recursiva
+        return Object.values(jsonb).some(v => containsTestCode(v, testCode));
+      }
+
+      return false;
+    }
+
+    /**
+     * Interpreta "tests_liberados"
+     * Aceita formatos como:
+     * - ["teste_a", "teste_b"]
+     * - [{"code":"teste_a"}]
+     * - {"teste_a": true, "teste_b": false}
+     * - {"lista":[...]} (aninhado)
+     */
+    function isTestLiberado(testsLiberados, testCode) {
+      if (!containsTestCode(testsLiberados, testCode)) return false;
+
+      if (isObject(testsLiberados) && Object.prototype.hasOwnProperty.call(testsLiberados, testCode)) {
+        const v = testsLiberados[testCode];
+        if (typeof v === "boolean") return v;
+        if (isObject(v) && "liberado" in v) return Boolean(v.liberado);
+        if (typeof v === "string") return !["false", "0", "nao", "não"].includes(v.toLowerCase());
+        return Boolean(v);
+      }
+
+      // Se está em array/string/objeto sem flag explícita, consideramos liberado
+      return true;
+    }
+
+    /**
+     * Interpreta "tests_feitos"
+     * Aceita formatos como:
+     * - ["teste_a", "teste_b"]
+     * - [{"code":"teste_a"}]
+     * - {"teste_a": true}
+     * - {"teste_a": {"feito": true}}
+     */
+    function isTestFeito(testsFeitos, testCode) {
+      if (!containsTestCode(testsFeitos, testCode)) return false;
+
+      if (isObject(testsFeitos) && Object.prototype.hasOwnProperty.call(testsFeitos, testCode)) {
+        const v = testsFeitos[testCode];
+        if (typeof v === "boolean") return v;
+        if (isObject(v) && "feito" in v) return Boolean(v.feito);
+        if (typeof v === "string") return !["false", "0", "nao", "não"].includes(v.toLowerCase());
+        return Boolean(v);
+      }
+
+      // Se apareceu em array, já consideramos que foi feito
+      return true;
+    }
+
+    function redirectToAreaPaciente(cpf) {
+      window.location.href = `${AREA_PACIENTE_URL}?${cpf}`;
+    }
+
+    function normalizeTestsFeitosForSave(current) {
+  const out = {};
+
+  if (!current) return out;
+
+  // string simples
+  if (typeof current === "string") {
+    out[current] = { feito: true };
+    return out;
+  }
+
+  // array
+  if (Array.isArray(current)) {
+    current.forEach(item => {
+      if (typeof item === "string") {
+        out[item] = { feito: true };
+      } else if (isObject(item)) {
+        const code = item.code || item.test_code || item.id;
+        if (code) {
+          out[code] = {
+            ...item,
+            feito: ("feito" in item) ? Boolean(item.feito) : true
+          };
+        }
+      }
+    });
+    return out;
+  }
+
+  // objeto
+  if (isObject(current)) {
+    Object.entries(current).forEach(([key, value]) => {
+      if (typeof value === "boolean") {
+        out[key] = { feito: value };
+      } else if (typeof value === "string") {
+        out[key] = { feito: !["false", "0", "nao", "não"].includes(value.toLowerCase()) };
+      } else if (isObject(value)) {
+        out[key] = { ...value };
+      } else {
+        out[key] = { feito: Boolean(value) };
+      }
+    });
+  }
+
+  return out;
+}
+
+function buildUpdatedTestsFeitos(currentTestsFeitos, testCode, submittedAtIso) {
+  const next = normalizeTestsFeitosForSave(currentTestsFeitos);
+
+  next[testCode] = {
+    ...(isObject(next[testCode]) ? next[testCode] : {}),
+    feito: true,
+    submitted_at: submittedAtIso
+  };
+
+  return next;
+}
+
+    /**************************************************************
+     * VALIDAÇÃO PRINCIPAL
+     **************************************************************/
+    async function validarAcessoAoTeste() {
+      const cpf = getCpfFromUrl();
+      const testCode = getTestCodeFromUrl();
+
+      if (!cpf || cpf.length !== 11) {
+        setStatus("CPF inválido ou ausente na URL.", "err");
+        return;
+      }
+
+      if (!testCode) {
+        setStatus("Código do teste não informado.", "err");
+        return;
+      }
+
+      // Meta info visual (só pra debug/controle)
+      $("metaInfo").classList.remove("hidden");
+      $("metaInfo").innerHTML = `
+        <span class="pill">CPF: ${cpf}</span>
+        <span class="pill">Teste: ${testCode}</span>
+      `;
+
+      setStatus("Consultando liberação do teste...", "loading");
+
+      const { data, error } = await supabaseClient
+        .from("patients")
+        .select("cpf, tests_liberados, tests_feitos")
+        .eq("cpf", cpf)
+        .maybeSingle();
+
+      if (error) {
+        console.error(error);
+        setStatus("Erro ao consultar a base de dados.", "err");
+        return;
+      }
+
+      if (!data) {
+        setStatus("CPF não encontrado.", "err");
+        return;
+      }
+
+      const liberado = isTestLiberado(data.tests_liberados, testCode);
+
+      if (!liberado) {
+        setStatus("Teste não liberado.", "warn");
+        return;
+      }
+
+      const feito = isTestFeito(data.tests_feitos, testCode);
+
+      if (feito) {
+        setStatus("Teste já realizado. Redirecionando para a área do paciente...", "ok");
+        setTimeout(() => redirectToAreaPaciente(cpf), 700);
+        return;
+      }
+
+      // Se chegou aqui, pode abrir o formulário
+      setStatus("Teste liberado. Formulário disponível.", "ok");
+      $("formWrap").classList.remove("hidden");
+    }
+
+
+/**************************************************************
+ * FORMULÁRIO DINÂMICO
+ **************************************************************/
+function slugify(str = "") {
+  return String(str)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function escapeHtml(text = "") {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function normalizeOption(option) {
+  if (typeof option === "string") {
+    return { value: option, label: option };
+  }
+  if (option && typeof option === "object") {
+    return {
+      value: option.value ?? option.label ?? "",
+      label: option.label ?? option.value ?? ""
+    };
+  }
+  return { value: "", label: "" };
+}
+
+function renderDynamicForm(questions = []) {
+  const form = $("testForm");
+  form.innerHTML = "";
+
+  questions.forEach((q, index) => {
+    const row = document.createElement("div");
+    row.className = "row";
+
+    const fieldName = getFieldName(q, index);
+    const fieldId = `field_${fieldName}_${index}`;
+
+    const label = document.createElement("label");
+    label.className = "field-label";
+    label.setAttribute("for", fieldId);
+    label.textContent = q.text || `Pergunta ${index + 1}`;
+    row.appendChild(label);
+
+    const type = (q.type || "text").toLowerCase();
+
+    // INPUTS SIMPLES
+    if (["text", "email", "number", "date", "tel", "password"].includes(type)) {
+      const input = document.createElement("input");
+      input.type = type;
+      input.id = fieldId;
+      input.name = fieldName;
+      input.placeholder = q.placeholder || "";
+      input.required = !!q.required;
+      if (q.min !== undefined) input.min = q.min;
+      if (q.max !== undefined) input.max = q.max;
+      if (q.step !== undefined) input.step = q.step;
+      row.appendChild(input);
+      input.className = "field-control";
+    }
+
+    // TEXTAREA
+    else if (type === "textarea") {
+      const textarea = document.createElement("textarea");
+      textarea.id = fieldId;
+      textarea.name = fieldName;
+      textarea.placeholder = q.placeholder || "";
+      textarea.required = !!q.required;
+      row.appendChild(textarea);
+      textarea.className = "field-control";
+    }
+
+    // SELECT
+    else if (type === "select") {
+      const select = document.createElement("select");
+      select.id = fieldId;
+      select.name = fieldName;
+      select.required = !!q.required;
+
+        select.className = "field-control";
+
+      (q.options || []).forEach(optRaw => {
+        const opt = normalizeOption(optRaw);
+        const optionEl = document.createElement("option");
+        optionEl.value = opt.value;
+        optionEl.textContent = opt.label;
+        select.appendChild(optionEl);
+      });
+
+      row.appendChild(select);
+    }
+
+    // RADIO
+    else if (type === "radio") {
+      const group = document.createElement("div");
+        group.className = "choice-group";
+      (q.options || []).forEach((optRaw, optIndex) => {
+        const opt = normalizeOption(optRaw);
+        const optionId = `${fieldId}_radio_${optIndex}`;
+
+        const wrap = document.createElement("label");
+        wrap.setAttribute("for", optionId);
+        wrap.className = "choice-item";
+        
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.id = optionId;
+        input.name = fieldName;
+        input.value = opt.value;
+        input.required = !!q.required && optIndex === 0;
+
+        const span = document.createElement("span");
+        span.className = "choice-text";
+        span.textContent = opt.label;
+
+        wrap.appendChild(input);
+        wrap.appendChild(span);
+        group.appendChild(wrap);
+      });
+
+      row.appendChild(group);
+    }
+
+    // CHECKBOX (duas formas)
+    // - sem options: checkbox único (boolean)
+    // - com options: grupo de checkbox (múltipla escolha)
+    else if (type === "checkbox") {
+      if (Array.isArray(q.options) && q.options.length > 0) {
+        const group = document.createElement("div");
+        group.className = "choice-group";
+       
+
+        (q.options || []).forEach((optRaw, optIndex) => {
+          const opt = normalizeOption(optRaw);
+          const optionId = `${fieldId}_check_${optIndex}`;
+
+          const wrap = document.createElement("label");
+          wrap.setAttribute("for", optionId);
+          wrap.className = "choice-item";
+     
+
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.id = optionId;
+          input.name = fieldName; // mesmo name = vira array no helper
+          input.value = opt.value;
+
+          const span = document.createElement("span");
+          span.className = "choice-text";
+          span.textContent = opt.label;
+
+          wrap.appendChild(input);
+          wrap.appendChild(span);
+          group.appendChild(wrap);
+        });
+
+        row.appendChild(group);
+      } else {
+        const wrap = document.createElement("label");
+        wrap.setAttribute("for", fieldId);
+        wrap.className = "choice-item";
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = fieldId;
+        input.name = fieldName;
+        input.value = "true";
+
+       const span = document.createElement("span");
+        span.className = "choice-text";
+        span.textContent = q.checkboxText || "Marcar";
+
+        wrap.appendChild(input);
+        wrap.appendChild(span);
+        row.appendChild(wrap);
+      }
+    }
+
+    // FALLBACK
+    else {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = fieldId;
+      input.name = fieldName;
+      input.placeholder = q.placeholder || "";
+      input.required = !!q.required;
+      row.appendChild(input);
+      input.className = "field-control";
+    }
+
+    form.appendChild(row);
+  });
+
+
+  // botão enviar (mantém seu id)
+  const submitBtn = document.createElement("button");
+  submitBtn.type = "submit";
+  submitBtn.id = "submitBtn";
+  submitBtn.textContent = "Enviar";
+  form.appendChild(submitBtn);
+}
+
+function getFieldName(q, index) {
+  return q.name || `q_${index + 1}_${slugify(q.text || q.type || "campo")}`;
+}
+
+function getOptionLabelFromQuestion(q, value) {
+  if (Array.isArray(value)) {
+    return value.map(v => getOptionLabelFromQuestion(q, v));
+  }
+
+  const options = Array.isArray(q.options) ? q.options.map(normalizeOption) : [];
+  const found = options.find(opt => String(opt.value) === String(value));
+
+  return found ? found.label : value;
+}
+
+function buildResultsPerguntasRespostas(questions, answersObj) {
+  const respostas = [];
+
+  questions.forEach((q, index) => {
+    const fieldName = getFieldName(q, index);
+
+    // salva só o que foi respondido
+    if (!Object.prototype.hasOwnProperty.call(answersObj, fieldName)) return;
+
+    const rawValue = answersObj[fieldName];
+    const respostaFormatada = getOptionLabelFromQuestion(q, rawValue);
+
+    respostas.push({
+      pergunta: q.text || `Pergunta ${index + 1}`,
+      resposta: respostaFormatada
+    });
+  });
+
+  return respostas;
+}
+
+
+function formDataToObject(formEl) {
+  const fd = new FormData(formEl);
+  const result = {};
+
+  for (const [key, value] of fd.entries()) {
+    if (Object.prototype.hasOwnProperty.call(result, key)) {
+      if (!Array.isArray(result[key])) {
+        result[key] = [result[key]];
+      }
+      result[key].push(value);
+    } else {
+      result[key] = value;
+    }
+  }
+
+  // Checkboxes boolean (sem options) não aparecem se desmarcados.
+  // Então vamos completar com false.
+  const checkboxes = formEl.querySelectorAll('input[type="checkbox"]');
+  const checkboxNames = new Set([...checkboxes].map(c => c.name));
+
+  checkboxNames.forEach(name => {
+    const group = [...formEl.querySelectorAll(`input[type="checkbox"][name="${CSS.escape(name)}"]`)];
+    if (group.length === 1) {
+      // checkbox único -> boolean
+      result[name] = group[0].checked;
+    } else {
+      // grupo -> array (se nenhum marcado, array vazio)
+      if (!Object.prototype.hasOwnProperty.call(result, name)) {
+        result[name] = [];
+      } else if (!Array.isArray(result[name])) {
+        result[name] = [result[name]];
+      }
+    }
+  });
+
+  return result;
+}
+
+    /**************************************************************
+     * ENVIO DO FORMULÁRIO (EXEMPLO)
+     * Aqui você coloca seu save real.
+     **************************************************************/
+   $("testForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const btn = $("submitBtn");
+  btn.disabled = true;
+  btn.textContent = "Enviando...";
+
+  try {
+    const cpf = getCpfFromUrl();
+    const testCode = getTestCodeFromUrl();
+    const submittedAt = new Date().toISOString();
+
+    // seu helper que preserva checkbox múltiplo
+    const rawPayload = formDataToObject(e.target);
+    const payload = buildResultsPerguntasRespostas(FORM_QUESTIONS, rawPayload);
+
+    // 1) Revalida no patients (não confiar só na validação inicial)
+    const { data: patient, error: patientError } = await supabaseClient
+      .from("patients")
+      .select("cpf, tests_liberados, tests_feitos")
+      .eq("cpf", cpf)
+      .maybeSingle();
+
+    if (patientError) {
+      console.error(patientError);
+      throw new Error("Erro ao consultar paciente.");
+    }
+
+    if (!patient) {
+      throw new Error("CPF não encontrado.");
+    }
+
+    const liberado = isTestLiberado(patient.tests_liberados, testCode);
+    if (!liberado) {
+      throw new Error("Teste não liberado.");
+    }
+
+    const jaFeito = isTestFeito(patient.tests_feitos, testCode);
+    if (jaFeito) {
+      // já feito -> volta pra área do paciente
+      redirectToAreaPaciente(cpf);
+      return;
+    }
+
+    // 2) Salva resposta na tabela respostas
+    // Se sua tabela for "resposta" (singular), troque aqui
+    const { error: insertError } = await supabaseClient
+      .from("respostas")
+      .insert([
+        {
+          cpf: cpf,
+          code: testCode,
+          submitted_at: submittedAt,
+          results: payload // objeto JS entra como JSON
+        }
+      ]);
+
+   if (insertError) {
+  console.error("ERRO INSERT respostas:", insertError);
+  throw new Error(
+    `Erro ao salvar respostas: ${insertError.message || ""} ${insertError.details || ""} ${insertError.hint || ""}`.trim()
+  );
+}
+
+    // 3) Atualiza tests_feitos no patients (JSONB)
+    const nextTestsFeitos = buildUpdatedTestsFeitos(patient.tests_feitos, testCode, submittedAt);
+
+    const { error: updateError } = await supabaseClient
+      .from("patients")
+      .update({
+        tests_feitos: nextTestsFeitos
+      })
+      .eq("cpf", cpf);
+
+    if (updateError) {
+      console.error(updateError);
+      throw new Error("Resposta salva, mas falhou ao marcar teste como feito.");
+    }
+
+    // 4) Sucesso
+    setStatus("Respostas enviadas com sucesso. Redirecionando...", "ok");
+
+    setTimeout(() => {
+      redirectToAreaPaciente(cpf);
+    }, 700);
+
+  } catch (err) {
+    console.error(err);
+    const msg = err?.message || "Erro ao enviar o formulário.";
+    setStatus(msg, "err");
+    alert(msg);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Enviar";
+  }
+});
+// Monta o formulário dinâmico
+renderDynamicForm(FORM_QUESTIONS);
+// Inicia a validação
+validarAcessoAoTeste();
+
+  </script>
+</body>
+</html>
