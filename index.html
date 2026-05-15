@@ -319,212 +319,1268 @@ const YNP     = ["Sim","Não","Não sei", "Não se aplica"];
  * CONFIGURAÇÃO DAS PERGUNTAS (DINÂMICO)
  **************************************************************/
 const FORM_QUESTIONS = [
-
-    {
-    name: "linguagem_dificuldade_aprendizado",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente para aprender, entender e/ou usar linguagem (palavras e frases) no dia a dia, abaixo do esperado para minha idade",
-    options: FREQ5,
-    required: true
-  },
   {
-    name: "linguagem_prejuizo_funcional",
+    name: "1",
     type: "radio",
-    text: "Minhas dificuldades de linguagem atrapalham de forma significativa minha comunicação, minha vida social e/ou meu desempenho escolar/profissional",
-    options: SEVER4
-  },
-  {
-    name: "linguagem_inicio_infancia",
-    type: "radio",
-    text: "Essas dificuldades de linguagem existem desde a infância (mesmo que tenham ficado mais evidentes quando as exigências aumentaram)",
-    options: YNP
-  },
-
-  {
-    name: "fala_dificuldade_articulacao",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente para produzir sons da fala de forma clara (troco/omito/distorço sons) e isso reduz a inteligibilidade da minha fala",
-    options: FREQ5
-  },
-  {
-    name: "fala_prejuizo_funcional",
-    type: "radio",
-    text: "Minha fala pouco clara atrapalha de forma significativa minha comunicação, minha participação social e/ou meu desempenho escolar/profissional",
-    options: SEVER4
-  },
-  {
-    name: "fala_inicio_infancia",
-    type: "radio",
-    text: "Essa dificuldade para articular sons começou na infância",
-    options: YNP
-  },
-
-  {
-    name: "pragmatica_objetivos_sociais",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente para usar a comunicação com objetivos sociais (ex.: cumprimentar, iniciar/encerrar conversa, compartilhar informações de forma adequada)",
-    options: FREQ5
-  },
-  {
-    name: "pragmatica_ajuste_contexto",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente para ajustar a comunicação ao contexto e às pessoas (ex.: formal/informal, adulto/criança, ambiente de casa/escola/trabalho)",
-    options: FREQ5
-  },
-  {
-    name: "pragmatica_prejuizo",
-    type: "radio",
-    text: "Essas dificuldades de comunicação social atrapalham de forma significativa minhas relações, meu desempenho escolar/profissional e/ou meu funcionamento no dia a dia",
-    options: SEVER4
-  },
-  {
-    name: "pragmatica_inicio_precoce",
-    type: "radio",
-    text: "Essas dificuldades de comunicação social existem desde cedo (mesmo que tenham ficado mais evidentes com o aumento das demandas sociais)",
-    options: YNP
-  },
-
-  {
-    name: "aprendizagem_dificuldade_6m",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente em pelo menos uma área acadêmica (leitura, escrita e/ou matemática) que dura há pelo menos 6 meses, mesmo com ajuda/intervenções direcionadas",
-    options: YNP
-  },
-  {
-    name: "aprendizagem_prejuizo",
-    type: "radio",
-    text: "Essas dificuldades acadêmicas atrapalham de forma significativa meu desempenho escolar/profissional e/ou tarefas do dia a dia",
-    options: SEVER4
-  },
-  {
-    name: "aprendizagem_inicio_escolar",
-    type: "radio",
-    text: "Essas dificuldades começaram nos anos escolares (mesmo que eu tenha percebido mais quando a exigência aumentou)",
-    options: YNP
-  },
-
-  {
-    name: "motor_coordenacao_baixa",
-    type: "radio",
-    text: "Minha coordenação motora é abaixo do esperado para minha idade (sou desajeitado(a) e/ou lento(a) e impreciso(a) em habilidades motoras)",
-    options: FREQ5
-  },
-  {
-    name: "motor_prejuizo",
-    type: "radio",
-    text: "Essas dificuldades motoras atrapalham de forma significativa minhas atividades do dia a dia (autocuidado, tarefas, autonomia) e/ou meu desempenho escolar/profissional/lazer",
-    options: SEVER4
-  },
-  {
-    name: "motor_inicio_infancia",
-    type: "radio",
-    text: "Essas dificuldades motoras começaram na infância",
-    options: YNP
-  },
-
-
-  {
-    name: "tea_reciprocidade",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente de reciprocidade socioemocional (por exemplo: manter uma troca natural na conversa, compartilhar interesses/emoções e iniciar ou responder interações sociais)",
-    options: FREQ5
-  },
-  {
-    name: "tea_comunicacao_nao_verbal",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente em usar e integrar comunicação não verbal (por exemplo: contato visual, gestos, expressão facial e linguagem corporal) de forma adequada ao contexto",
-    options: FREQ5
-  },
-  {
-    name: "tea_relacionamentos",
-    type: "radio",
-    text: "Eu tenho dificuldade persistente para desenvolver, manter e compreender relacionamentos (por exemplo: fazer/manter amizades, ajustar meu comportamento ao contexto e demonstrar interesse por pares)",
-    options: FREQ5
-  },
-  {
-    name: "tea_movimentos_repetitivos",
-    type: "radio",
-    text: "Eu faço movimentos repetitivos e/ou uso objetos de forma repetitiva e incomum (por exemplo: balançar o corpo, bater as mãos, alinhar ou girar objetos)",
-    options: FREQ5
-  },
-  {
-    name: "tea_ecolalia",
-    type: "radio",
-    text: "Eu repito palavras/frases ou tenho um jeito de falar repetitivo e estereotipado (por exemplo: ecolalia, frases prontas, repetir o que ouvi)",
-    options: FREQ5
-  },
-  {
-    name: "tea_hipersensibilidade_sensorial",
-    type: "radio",
-    text: "Eu reajo de forma muito intensa a estímulos sensoriais (sons, luz, cheiros, texturas) ou, ao contrário, pareço sentir pouco dor/temperatura",
-    options: FREQ5
-  },
-  {
-    name: "tea_inicio_desenvolvimento",
-    type: "radio",
-    text: "Essas dificuldades sociais e/ou esses comportamentos repetitivos existem desde o início do meu desenvolvimento (mesmo que tenham ficado mais evidentes quando as exigências aumentaram)",
-    options: YNP
-  },
-  {
-    name: "tea_prejuizo_atual",
-    type: "radio",
-    text: "Essas dificuldades sociais e/ou esses comportamentos repetitivos causam prejuízo significativo na minha vida atual (social, escolar, profissional e/ou autonomia)",
-    options: SEVER4
-  },
-
-  {
-    name: "tdah_desatencao_erros",
-    type: "radio",
-    text: "Eu frequentemente cometo erros por descuido ou deixo passar detalhes importantes em tarefas (escola, trabalho ou rotina)",
-    options: FREQ5
-  },
-  {
-    name: "tdah_desatencao_manutencao",
-    type: "radio",
-    text: "Eu frequentemente tenho dificuldade de manter a atenção em tarefas ou atividades longas",
-    options: FREQ5
-  },
-  {
-    name: "tdah_desatencao_esquecimento",
-    type: "radio",
-    text: "Eu frequentemente esqueço atividades do dia a dia (compromissos, recados, pagamentos, retornar mensagens)",
-    options: FREQ5
-  },
-
-  {
-    name: "tdah_hiperatividade_inquietacao",
-    type: "radio",
-    text: "Eu frequentemente remexo mãos/pés, me contorço na cadeira ou demonstro inquietação motora",
-    options: FREQ5
-  },
-  {
-    name: "tdah_impulsividade_interrupcao",
-    type: "radio",
-    text: "Eu frequentemente interrompo, me intrometo ou invado o espaço do outro",
-    options: FREQ5
-  },
-  {
-    name: "tdah_inicio_precoce",
-    type: "radio",
-    text: "Vários desses sintomas já estavam presentes antes dos meus 12 anos",
+    section: "Neurodesenvolvimento — Triagem & História",
+    text: "Desde a infância, você apresenta dificuldades persistentes de aprendizagem, atenção, comunicação, socialização, coordenação motora, comportamento ou adaptação à rotina?",
     options: YNP,
-   
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
   {
-    name: "tdah_multiplos_contextos",
+    name: "2",
     type: "radio",
-    text: "Esses sintomas aparecem em dois ou mais contextos (casa, escola, trabalho, vida social)",
-    options: YNP
+    section: "Neurodesenvolvimento — Triagem & História",
+    text: "Essas dificuldades começaram antes da vida adulta, mesmo que tenham ficado mais evidentes apenas depois?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
   },
   {
-    name: "tdah_prejuizo_funcional",
+    name: "3",
     type: "radio",
-    text: "Esses sintomas causam prejuízo significativo na minha vida",
-    options: SEVER4
+    section: "Neurodesenvolvimento — Triagem & História",
+    text: "Essas dificuldades aparecem em mais de um contexto, como casa, escola, trabalho, faculdade, relacionamentos ou vida social?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "4",
+    type: "radio",
+    section: "Neurodesenvolvimento — Triagem & História",
+    text: "Essas dificuldades prejudicam sua autonomia, desempenho escolar/profissional, organização, relacionamentos, comunicação ou vida diária?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "5",
+    type: "radio",
+    section: "Neurodesenvolvimento — Triagem & História",
+    text: "Familiares, professores, colegas ou profissionais já perceberam essas dificuldades desde a infância ou adolescência?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "6",
+    type: "radio",
+    section: "Neurodesenvolvimento — Desenvolvimento Infantil",
+    text: "Na infância, houve atraso para falar, formar frases, compreender comandos, andar, brincar, interagir ou aprender habilidades esperadas para a idade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "7",
+    type: "radio",
+    section: "Neurodesenvolvimento — Desenvolvimento Infantil",
+    text: "Na infância, você precisou de acompanhamento com fonoaudiólogo, psicopedagogo, terapeuta ocupacional, neurologista, psicólogo ou apoio escolar especializado?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "8",
+    type: "radio",
+    section: "Neurodesenvolvimento — Desenvolvimento Infantil",
+    text: "Na escola, você teve dificuldade persistente para acompanhar conteúdos, aprender no mesmo ritmo dos colegas ou realizar tarefas esperadas para sua idade?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "9",
+    type: "radio",
+    section: "Neurodesenvolvimento — Desenvolvimento Infantil",
+    text: "Na infância, você era descrito como muito distraído, agitado, desorganizado, rígido, isolado, impulsivo, atrasado, imaturo ou diferente das outras crianças?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "10",
+    type: "radio",
+    section: "Deficiência Intelectual — Raciocínio e Aprendizagem",
+    text: "Desde a infância, você apresenta dificuldade importante para compreender explicações, resolver problemas, aprender conceitos novos ou acompanhar conteúdos escolares?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "11",
+    type: "radio",
+    section: "Deficiência Intelectual — Raciocínio e Aprendizagem",
+    text: "Você precisa de mais repetições, exemplos, ajuda prática ou tempo do que outras pessoas para aprender algo novo?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "12",
+    type: "radio",
+    section: "Deficiência Intelectual — Raciocínio e Aprendizagem",
+    text: "Você tem dificuldade para entender ideias abstratas, regras complexas, consequências futuras, planejamento ou solução de problemas do cotidiano?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "13",
+    type: "radio",
+    section: "Deficiência Intelectual — Raciocínio e Aprendizagem",
+    text: "Você teve histórico de repetência, necessidade de adaptação escolar, sala de recursos, currículo adaptado ou dificuldade significativa para concluir etapas escolares?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "14",
+    type: "radio",
+    section: "Deficiência Intelectual — Funcionamento Adaptativo",
+    text: "Você tem dificuldade para cuidar de tarefas práticas do dia a dia, como dinheiro, horários, transporte, compras, documentos, medicações ou compromissos?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "15",
+    type: "radio",
+    section: "Deficiência Intelectual — Funcionamento Adaptativo",
+    text: "Você precisa de ajuda, supervisão ou orientação frequente para realizar atividades que outras pessoas da sua idade costumam fazer sozinhas?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "16",
+    type: "radio",
+    section: "Deficiência Intelectual — Funcionamento Adaptativo",
+    text: "Você tem dificuldade para compreender riscos, regras sociais, consequências de decisões ou situações em que pode ser enganado ou explorado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "17",
+    type: "radio",
+    section: "Deficiência Intelectual — Funcionamento Adaptativo",
+    text: "Suas dificuldades de aprendizagem e autonomia existem desde o desenvolvimento inicial, e não começaram apenas após doença, trauma, depressão, uso de substâncias ou envelhecimento?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "18",
+    type: "radio",
+    section: "Comunicação — Linguagem",
+    text: "Desde a infância, você tem dificuldade para entender o que as pessoas dizem, especialmente frases longas, instruções complexas ou explicações com muitos detalhes?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "19",
+    type: "radio",
+    section: "Comunicação — Linguagem",
+    text: "Você tem dificuldade para se expressar com clareza, formar frases completas, explicar ideias, contar acontecimentos ou organizar uma narrativa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "20",
+    type: "radio",
+    section: "Comunicação — Linguagem",
+    text: "Você costuma ter vocabulário limitado, dificuldade para encontrar palavras ou dificuldade para explicar o que pensa de forma compreensível?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "21",
+    type: "radio",
+    section: "Comunicação — Linguagem",
+    text: "Suas dificuldades de linguagem prejudicam conversas, aprendizagem, trabalho, estudos, relações sociais ou compreensão de orientações?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "22",
+    type: "radio",
+    section: "Comunicação — Fala e Sons",
+    text: "Desde a infância, você teve dificuldade persistente para pronunciar sons, palavras ou frases de forma clara para outras pessoas entenderem?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "23",
+    type: "radio",
+    section: "Comunicação — Fala e Sons",
+    text: "As pessoas pedem para você repetir o que falou por dificuldade de articulação, fala enrolada, troca de sons ou pronúncia pouco clara?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "24",
+    type: "radio",
+    section: "Comunicação — Fala e Sons",
+    text: "Sua forma de falar já prejudicou comunicação, socialização, escola, trabalho ou autoestima?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "25",
+    type: "radio",
+    section: "Comunicação — Fluência/Gagueira",
+    text: "Você apresenta repetições de sons, sílabas ou palavras, prolongamentos, bloqueios ou pausas involuntárias ao falar?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "26",
+    type: "radio",
+    section: "Comunicação — Fluência/Gagueira",
+    text: "Você evita falar, apresentar, telefonar, ler em voz alta ou participar de conversas por medo de gaguejar, travar ou ser julgado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "27",
+    type: "radio",
+    section: "Comunicação — Fluência/Gagueira",
+    text: "A dificuldade de fluência na fala começou na infância e prejudica sua comunicação, desempenho ou vida social?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "28",
+    type: "radio",
+    section: "Comunicação — Pragmática/Social",
+    text: "Você tem dificuldade para adaptar sua fala ao contexto, como falar de um jeito diferente com amigos, autoridades, crianças, pacientes, professores ou desconhecidos?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "29",
+    type: "radio",
+    section: "Comunicação — Pragmática/Social",
+    text: "Você tem dificuldade para iniciar, manter ou encerrar conversas de forma adequada, respeitando turnos, interesse do outro e mudanças de assunto?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "30",
+    type: "radio",
+    section: "Comunicação — Pragmática/Social",
+    text: "Você tem dificuldade para entender indiretas, ironias, piadas, duplo sentido, expressões faciais, tom de voz ou mensagens implícitas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "31",
+    type: "radio",
+    section: "Comunicação — Pragmática/Social",
+    text: "Suas dificuldades de comunicação social acontecem mesmo sem comportamentos repetitivos, interesses restritos ou rigidez marcante?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "32",
+    type: "radio",
+    section: "TEA — Comunicação e Reciprocidade Social",
+    text: "Desde a infância, você tem dificuldade para iniciar ou manter interações sociais de forma natural, recíproca e espontânea?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "33",
+    type: "radio",
+    section: "TEA — Comunicação e Reciprocidade Social",
+    text: "Você tem dificuldade para perceber quando a outra pessoa está interessada, entediada, desconfortável, confusa, triste ou querendo encerrar a conversa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "34",
+    type: "radio",
+    section: "TEA — Comunicação e Reciprocidade Social",
+    text: "Você tem dificuldade para compartilhar interesses, emoções, conquistas ou experiências de forma espontânea com outras pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "35",
+    type: "radio",
+    section: "TEA — Comunicação e Reciprocidade Social",
+    text: "Você sente que precisa pensar conscientemente em como agir socialmente, como olhar, responder, sorrir, perguntar ou manter uma conversa?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "36",
+    type: "radio",
+    section: "TEA — Comunicação Não Verbal",
+    text: "Você tem dificuldade para usar ou interpretar contato visual, expressões faciais, gestos, postura corporal ou tom de voz durante interações sociais?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "37",
+    type: "radio",
+    section: "TEA — Comunicação Não Verbal",
+    text: "Você já foi descrito como alguém com expressão facial, olhar, voz ou gestos pouco naturais, reduzidos, intensos ou diferentes do esperado?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "38",
+    type: "radio",
+    section: "TEA — Comunicação Não Verbal",
+    text: "Você evita contato visual, usa contato visual de forma muito intensa ou precisa se esforçar para parecer natural ao olhar para as pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "39",
+    type: "radio",
+    section: "TEA — Relacionamentos",
+    text: "Desde a infância, você tem dificuldade para fazer amigos, manter vínculos, participar de grupos ou entender regras sociais implícitas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "40",
+    type: "radio",
+    section: "TEA — Relacionamentos",
+    text: "Você sente dificuldade para ajustar seu comportamento conforme o ambiente social, como escola, trabalho, família, amizades, namoro ou situações formais?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "41",
+    type: "radio",
+    section: "TEA — Relacionamentos",
+    text: "Você prefere interações previsíveis, com poucas mudanças, poucas pessoas ou regras claras, porque situações sociais abertas geram confusão ou cansaço?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "42",
+    type: "radio",
+    section: "TEA — Relacionamentos",
+    text: "Você sente que entende melhor assuntos, tarefas ou sistemas do que intenções, emoções e expectativas sociais das pessoas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "43",
+    type: "radio",
+    section: "TEA — Comportamentos Repetitivos",
+    text: "Você apresenta movimentos repetitivos, como balançar o corpo, mexer mãos/dedos, bater objetos, andar em círculos, pular, se balançar ou repetir gestos?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "44",
+    type: "radio",
+    section: "TEA — Comportamentos Repetitivos",
+    text: "Você repete palavras, frases, sons, trechos de filmes, músicas, expressões ou falas de outras pessoas de forma frequente ou automática?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "45",
+    type: "radio",
+    section: "TEA — Rotina e Rigidez",
+    text: "Você sente sofrimento intenso quando há mudanças de rotina, imprevistos, atrasos, alterações de planos ou quebra de padrões esperados?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "46",
+    type: "radio",
+    section: "TEA — Rotina e Rigidez",
+    text: "Você precisa que objetos, atividades, caminhos, horários, sequências ou procedimentos aconteçam de um jeito específico para se sentir regulado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "47",
+    type: "radio",
+    section: "TEA — Interesses Restritos",
+    text: "Você tem interesses muito intensos, específicos ou absorventes, que ocupam muito tempo, conversa, pesquisa ou pensamento?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "48",
+    type: "radio",
+    section: "TEA — Interesses Restritos",
+    text: "Você tem dificuldade para interromper, variar ou reduzir o tempo dedicado a interesses específicos, mesmo quando isso prejudica outras áreas da vida?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "49",
+    type: "radio",
+    section: "TEA — Sensorial",
+    text: "Você tem sensibilidade intensa a sons, luzes, cheiros, texturas, etiquetas, roupas, alimentos, toque, dor, temperatura ou ambientes movimentados?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "50",
+    type: "radio",
+    section: "TEA — Sensorial",
+    text: "Você busca estímulos sensoriais específicos, como cheirar, tocar, apertar, balançar, olhar luzes, ouvir sons repetidos ou buscar pressão no corpo?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "51",
+    type: "radio",
+    section: "TEA — Impacto Funcional",
+    text: "Essas características sociais, sensoriais, repetitivas ou de rigidez prejudicam sua autonomia, relacionamentos, trabalho, estudos, rotina ou saúde emocional?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "52",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Desde a infância, você tem dificuldade para manter atenção em tarefas, estudos, leituras, conversas, reuniões ou atividades longas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "53",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você comete erros por descuido, deixa passar detalhes ou tem dificuldade de revisar o que faz?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "54",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você parece não escutar quando falam diretamente com você, mesmo sem intenção de ignorar?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "55",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você começa tarefas, mas se perde, abandona, demora demais ou tem dificuldade de concluir até o final?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "56",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você tem dificuldade para organizar tarefas, tempo, objetos, compromissos, documentos, estudos ou rotina?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "57",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você evita, adia ou sofre muito para iniciar tarefas que exigem esforço mental prolongado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "58",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você perde objetos importantes, como celular, chaves, documentos, materiais, carteira, óculos ou itens de trabalho/estudo?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "59",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você se distrai facilmente com estímulos externos, pensamentos, notificações, conversas, barulhos ou coisas ao redor?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "60",
+    type: "radio",
+    section: "TDAH — Desatenção",
+    text: "Você esquece compromissos, prazos, tarefas, recados, pagamentos, retornos ou atividades do dia a dia?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "61",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Desde a infância, você sente inquietação física ou mental, como se fosse difícil ficar parado, relaxar ou desacelerar?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "62",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Você mexe mãos, pés, objetos, muda de posição ou se levanta com frequência em situações em que deveria permanecer sentado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "63",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Você sente dificuldade para realizar atividades em silêncio, com calma ou em ritmo mais lento?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "64",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Você fala demais, interrompe, completa frases dos outros ou tem dificuldade de esperar sua vez em conversas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "65",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Você responde antes da pergunta terminar, toma decisões rápidas demais ou age antes de pensar nas consequências?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "66",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Você tem dificuldade de esperar em filas, turnos, processos, trânsito, conversas ou situações que exigem paciência?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "67",
+    type: "radio",
+    section: "TDAH — Hiperatividade/Impulsividade",
+    text: "Sua impulsividade já causou prejuízo com gastos, falas inadequadas, decisões precipitadas, conflitos, direção, alimentação, sexo ou uso de substâncias?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "68",
+    type: "radio",
+    section: "TDAH — Curso e Impacto",
+    text: "Os sintomas de desatenção, hiperatividade ou impulsividade estavam presentes antes dos 12 anos de idade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "69",
+    type: "radio",
+    section: "TDAH — Curso e Impacto",
+    text: "Esses sintomas aparecem em dois ou mais contextos, como casa, escola, trabalho, faculdade, trânsito, relacionamentos ou vida social?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "70",
+    type: "radio",
+    section: "TDAH — Curso e Impacto",
+    text: "Esses sintomas causam prejuízo real em desempenho, produtividade, organização, relacionamentos, finanças, estudos, trabalho ou rotina?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "71",
+    type: "radio",
+    section: "Aprendizagem — Leitura",
+    text: "Desde a infância, você tem dificuldade persistente para ler palavras corretamente, ler em voz alta ou reconhecer palavras com precisão?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "72",
+    type: "radio",
+    section: "Aprendizagem — Leitura",
+    text: "Você lê de forma lenta, cansativa, com muitos erros, trocas, adivinhações ou necessidade de reler várias vezes?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "73",
+    type: "radio",
+    section: "Aprendizagem — Leitura",
+    text: "Você tem dificuldade para compreender textos, identificar ideias principais, lembrar o que leu ou fazer inferências a partir da leitura?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "74",
+    type: "radio",
+    section: "Aprendizagem — Escrita",
+    text: "Desde a infância, você tem dificuldade persistente com ortografia, troca de letras, acentuação, pontuação ou organização de frases escritas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "75",
+    type: "radio",
+    section: "Aprendizagem — Escrita",
+    text: "Você tem dificuldade para escrever textos claros, organizar ideias por escrito, desenvolver parágrafos ou transformar pensamentos em escrita?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "76",
+    type: "radio",
+    section: "Aprendizagem — Escrita",
+    text: "Você evita escrever, preencher formulários, fazer redações, enviar mensagens formais ou produzir textos por medo de errar ou se confundir?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "77",
+    type: "radio",
+    section: "Aprendizagem — Matemática",
+    text: "Desde a infância, você tem dificuldade persistente para entender números, contas, tabuada, cálculo mental, operações matemáticas ou raciocínio matemático?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "78",
+    type: "radio",
+    section: "Aprendizagem — Matemática",
+    text: "Você se confunde com dinheiro, troco, medidas, horários, porcentagens, estimativas, sequência de passos ou problemas matemáticos do cotidiano?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "79",
+    type: "radio",
+    section: "Aprendizagem — Matemática",
+    text: "Mesmo com ensino, treino e explicações, a matemática continua sendo muito mais difícil para você do que outras áreas?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "80",
+    type: "radio",
+    section: "Aprendizagem — Curso e Impacto",
+    text: "As dificuldades de leitura, escrita ou matemática persistiram por pelo menos 6 meses, mesmo com ajuda, treino, reforço ou ensino adequado?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "81",
+    type: "radio",
+    section: "Aprendizagem — Curso e Impacto",
+    text: "Essas dificuldades prejudicaram desempenho escolar, acadêmico, profissional, autoestima, autonomia ou escolha de atividades?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "82",
+    type: "radio",
+    section: "Aprendizagem — Curso e Impacto",
+    text: "Essas dificuldades não são explicadas apenas por falta de oportunidade escolar, ausência de ensino, baixa visão/audição, deficiência intelectual ou mudança de idioma?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "83",
+    type: "radio",
+    section: "Coordenação Motora — Desenvolvimento",
+    text: "Desde a infância, você tem dificuldade importante com coordenação motora, como correr, pular, pegar bola, andar de bicicleta, usar tesoura, escrever ou amarrar cadarços?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "84",
+    type: "radio",
+    section: "Coordenação Motora — Desenvolvimento",
+    text: "Você era ou é descrito como desajeitado, estabanado, lento, com dificuldade para esportes, atividades manuais ou tarefas que exigem coordenação?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "85",
+    type: "radio",
+    section: "Coordenação Motora — Desenvolvimento",
+    text: "Você derruba objetos, tropeça, esbarra, quebra coisas ou se machuca com frequência por dificuldade de coordenação?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "86",
+    type: "radio",
+    section: "Coordenação Motora — Desenvolvimento",
+    text: "Sua dificuldade motora prejudica escrita, autocuidado, atividades escolares/profissionais, esportes, tarefas domésticas ou vida diária?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "87",
+    type: "radio",
+    section: "Coordenação Motora — Desenvolvimento",
+    text: "Essa dificuldade motora não é explicada apenas por lesão neurológica, deficiência visual, paralisia, doença muscular, dor ou condição médica conhecida?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "88",
+    type: "radio",
+    section: "Movimentos Estereotipados",
+    text: "Você apresenta movimentos repetitivos aparentemente sem objetivo, como balançar o corpo, bater mãos, mexer dedos, girar objetos, bater cabeça ou se morder?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "89",
+    type: "radio",
+    section: "Movimentos Estereotipados",
+    text: "Esses movimentos repetitivos acontecem desde a infância ou início do desenvolvimento?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "90",
+    type: "radio",
+    section: "Movimentos Estereotipados",
+    text: "Esses movimentos causam prejuízo, interferem na rotina, geram constrangimento ou provocam machucados?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "91",
+    type: "radio",
+    section: "Movimentos Estereotipados",
+    text: "Esses movimentos aumentam quando você está ansioso, animado, frustrado, entediado, sobrecarregado ou exposto a estímulos sensoriais?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "92",
+    type: "radio",
+    section: "Tiques — Motores",
+    text: "Você apresenta movimentos rápidos, repetitivos e involuntários, como piscar, mexer o nariz, caretas, movimentos de cabeça, ombros, braços ou contrações musculares?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "93",
+    type: "radio",
+    section: "Tiques — Vocais",
+    text: "Você apresenta sons ou vocalizações repetitivas e involuntárias, como pigarrear, fungar, tossir, estalar a língua, grunhir, repetir palavras ou emitir sons?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "94",
+    type: "radio",
+    section: "Tiques — Curso",
+    text: "Antes do tique, você sente uma tensão, incômodo ou sensação interna que melhora depois do movimento ou som?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "95",
+    type: "radio",
+    section: "Tiques — Curso",
+    text: "Esses tiques começaram antes dos 18 anos de idade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "96",
+    type: "radio",
+    section: "Tiques — Curso",
+    text: "Os tiques motores ou vocais persistem há mais de 1 ano, mesmo variando em frequência e intensidade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "97",
+    type: "radio",
+    section: "Tiques — Tourette",
+    text: "Em algum período da vida, você apresentou tanto tiques motores quanto tiques vocais, mesmo que não tenham ocorrido exatamente ao mesmo tempo?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "98",
+    type: "radio",
+    section: "Tiques — Impacto",
+    text: "Os tiques causam sofrimento, dor, constrangimento, dificuldade social, prejuízo escolar/profissional ou interferência na rotina?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "99",
+    type: "radio",
+    section: "Neurodesenvolvimento — Regulação Emocional",
+    text: "Desde a infância, você apresenta explosões emocionais, crises de frustração, irritabilidade ou dificuldade de se regular quando algo muda, falha ou sai do esperado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "100",
+    type: "radio",
+    section: "Neurodesenvolvimento — Regulação Emocional",
+    text: "Suas crises emocionais parecem ligadas a sobrecarga sensorial, dificuldade de comunicação, rigidez, desorganização, impulsividade ou frustração por demandas difíceis?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "101",
+    type: "radio",
+    section: "Neurodesenvolvimento — Regulação Emocional",
+    text: "Depois de uma crise emocional, você sente cansaço intenso, vergonha, confusão ou dificuldade de explicar por que reagiu daquela forma?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "102",
+    type: "radio",
+    section: "Neurodesenvolvimento — Funcionamento Adaptativo",
+    text: "Você tem dificuldade para manter rotina, organizar casa, cuidar de prazos, dinheiro, higiene, alimentação, sono, compromissos ou autocuidado?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "103",
+    type: "radio",
+    section: "Neurodesenvolvimento — Funcionamento Adaptativo",
+    text: "Você depende mais do que gostaria de lembretes, supervisão, familiares, aplicativos, listas ou ajuda externa para funcionar no dia a dia?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "104",
+    type: "radio",
+    section: "Neurodesenvolvimento — Funcionamento Adaptativo",
+    text: "Você tem desempenho muito diferente conforme o ambiente está estruturado ou desestruturado, previsível ou imprevisível, calmo ou sobrecarregado?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "105",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Ansiedade",
+    text: "Suas dificuldades de atenção, fala, socialização, aprendizagem ou desempenho aparecem apenas quando você está ansioso, sob pressão ou com medo de julgamento?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "106",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Ansiedade",
+    text: "Quando a ansiedade diminui, suas dificuldades sociais, cognitivas ou acadêmicas melhoram muito, a ponto de quase desaparecerem?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "107",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Depressão",
+    text: "Suas dificuldades de atenção, memória, motivação ou aprendizagem começaram apenas junto com tristeza, perda de prazer, baixa energia ou depressão?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "108",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Depressão",
+    text: "Quando seu humor melhora, as dificuldades de atenção, organização, memória ou aprendizagem melhoram de forma importante?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "109",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Trauma",
+    text: "Suas dificuldades começaram ou pioraram claramente depois de trauma, violência, abuso, negligência, perda, separação ou ambiente familiar muito instável?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "110",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Trauma",
+    text: "Suas dificuldades aparecem principalmente quando algo lembra trauma, ameaça, rejeição, punição, abandono ou situações de medo intenso?",
+    options: FREQ5,
+    scale: "FREQ5",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "111",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Psicose",
+    text: "Suas dificuldades sociais ou comportamentais começaram antes de qualquer delírio, alucinação, desorganização grave ou perda de contato com a realidade?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "112",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Psicose",
+    text: "Você já teve vozes, visões, crenças persecutórias, ideias de controle externo ou comportamento muito desorganizado que surgiram depois de um período de funcionamento anterior melhor?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "113",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Neurocognitivo",
+    text: "Suas dificuldades cognitivas, sociais ou funcionais são antigas desde o desenvolvimento, e não uma perda recente ou progressiva de habilidades que você já tinha?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "114",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Neurocognitivo",
+    text: "Houve piora cognitiva recente ou progressiva em memória, linguagem, orientação, autonomia ou julgamento em relação ao seu funcionamento anterior?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "115",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Substâncias/Medicações",
+    text: "Essas dificuldades começaram apenas após uso de álcool, drogas, estimulantes, cannabis, sedativos, anticonvulsivantes, corticoides ou outras medicações?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "116",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial com Substâncias/Medicações",
+    text: "Quando você reduz ou suspende substâncias/medicações que afetam atenção, humor, sono ou cognição, suas dificuldades diminuem claramente?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "117",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial Médico/Sensorial",
+    text: "Suas dificuldades podem ser explicadas principalmente por perda auditiva, baixa visão, doença neurológica, epilepsia, traumatismo craniano, alteração genética, dor crônica ou condição médica importante?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "118",
+    type: "radio",
+    section: "Neurodesenvolvimento — Diferencial Médico/Sensorial",
+    text: "Você já teve avaliação auditiva, visual, neurológica ou médica indicando uma condição que explique melhor suas dificuldades de comunicação, aprendizagem, coordenação ou atenção?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "119",
+    type: "radio",
+    section: "Neurodesenvolvimento — História Familiar",
+    text: "Há familiares biológicos com TDAH, autismo, deficiência intelectual, transtorno de aprendizagem, atraso de linguagem, tiques, epilepsia ou dificuldades escolares importantes?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "120",
+    type: "radio",
+    section: "Neurodesenvolvimento — História Familiar",
+    text: "Na sua família, há histórico de pessoas muito desatentas, impulsivas, rígidas, socialmente peculiares, com interesses intensos, dificuldades escolares ou atraso no desenvolvimento?",
+    options: YNP,
+    scale: "YNP",
+    reverse: false,
+    required: false
+  },
+
+  {
+    name: "121",
+    type: "radio",
+    section: "Neurodesenvolvimento — Risco e Segurança",
+    text: "Suas dificuldades de atenção, impulsividade, rigidez, comunicação ou compreensão social já colocaram você em situações de risco, acidentes, golpes, conflitos ou exploração?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "122",
+    type: "radio",
+    section: "Neurodesenvolvimento — Risco e Segurança",
+    text: "Você já teve pensamentos de morte, autoagressão ou suicídio por sofrimento ligado a exclusão, fracasso escolar/profissional, sobrecarga sensorial, rejeição ou sensação de inadequação?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
+  },
+  {
+    name: "123",
+    type: "radio",
+    section: "Neurodesenvolvimento — Risco e Segurança",
+    text: "Atualmente, existe risco de você se machucar, se colocar em perigo, agir impulsivamente, sofrer exploração ou entrar em crise intensa por causa dessas dificuldades?",
+    options: SEVER4,
+    scale: "SEVER4",
+    reverse: false,
+    required: false
   }
-
 ];
-
     /**************************************************************
      * HELPERS
      **************************************************************/
